@@ -1,0 +1,242 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --clr-primary: #F70058;
+    --clr-dark: #0C0E36;
+    --clr-light: #FFF;
+    --fw-normal: 400;
+    --fw-bold: 700;
+    --fw-black: 900;
+    --grid: minmax(1em, 10%)
+            minmax(10rem, 22ch) 
+            minmax(10rem, 23ch)
+            minmax(1em, 3fr)
+            max-content 
+            ;
+}
+
+body { 
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.125rem;
+    color: var(--clr-dark);
+    line-height: 1.6;
+    background: gray;
+}
+
+h1, h2, h3 { line-height: 1; }
+
+p {
+    margin-top: 0;
+}
+
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    padding: .5em 1.25em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: var(--fw-bold);
+    margin-bottom: .75em;
+}
+
+.btn + .btn {
+    margin-left: 1em;
+}
+
+.btn--primary {
+    background-color: var(--clr-primary);
+    color: var(--clr-light);
+}
+
+.btn--primary:hover {
+    background-color: var(--clr-dark);
+}
+
+.btn-outline {
+    outline: 3px solid var(--clr-primary);
+    outline-offset: -3px;
+    color: var(--clr-primary);
+}
+
+.btn-outline:hover {
+    background: var(--clr-dark);
+    outline-color: var(--clr-dark);
+    color: var(--clr-light);
+}
+
+header {
+    background-color: var(--clr-light);
+    text-align: center;
+}
+
+.logo {
+    margin-top: 1em;
+}
+
+.nav__list {
+    display: flex;
+    justify-content: space-between;
+    max-width: 35rem;
+    margin: 0 auto;
+    /* margin-top: 1em; */
+    padding: 1em;
+    list-style: none;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    font-weight: var(--fw-bold);
+    letter-spacing: 1px;
+}
+
+.nav__list-item {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav__link:hover {
+    color: var(--clr-primary);
+}
+
+.weather {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    background: var(--clr-dark);
+    color: var(--clr-light);
+    width: max-content;
+    margin: .5em auto -1em;
+    position: relative;
+    z-index: 1;
+}
+
+.weather__icon {
+    grid-row: span 2;
+    background-color: var(--clr-primary);
+    padding: .5em;
+    display: flex;
+}
+
+.weather__info {
+    margin: 0;
+    margin-left: .75rem;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    font-weight: var(--fw-bold);
+    letter-spacing: 1px;
+    font-size: .75rem;
+    display: flex;
+    align-items: center;
+}
+
+.weather__info span {
+    color: var(--clr-light);
+    margin-right: .75rem;
+    font-size: 1rem;
+    text-transform: none;
+    margin-left: 1em;
+}
+
+.weather__info:first-of-type {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    position: relative;
+}
+
+.weather__info:first-of-type::after {
+    content: '';
+    position: absolute;
+    background: var(--clr-light);
+    opacity: .25;
+    height: 2px;
+    width: calc(100% - .75rem);
+    bottom: -.25rem;
+}
+
+.weather__info:last-of-type {
+    margin-bottom: .5rem;
+}
+
+.main {
+    padding: 3em 1em 10rem;
+}
+
+.main--ski {
+    background-image: url(../images/skiier.jpg);
+    background-size: cover;
+}
+
+.main__title {
+    line-height: 1;
+    font-weight: var(--fw-black);
+    font-size: 3rem;
+    margin-bottom: .75em;
+}
+
+.main__intro {
+    margin-bottom: 4em;
+}
+
+
+
+@media (min-width: 700px) {
+    .main {
+        display: grid;
+        grid-template-columns: var(--grid);            
+        justify-items: start;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .main > * { grid-column: 2 / 4; }
+
+    .main--ski {
+        background-position: left bottom;
+    }
+}
+
+@media (min-width: 1000px) {
+    header {
+        display: grid;
+        grid-template-columns: var(--grid);
+        align-items: center;
+    }
+
+    .logo,
+    .nav,
+    .weather {
+        grid-row: 1;
+        margin: 0;
+    }
+
+    .logo {
+        grid-column: 2;
+    }
+
+    .nav {
+        grid-column: 2 / 5;
+        justify-self: end;
+        margin-right: 3em;
+    }
+
+    .weather {
+        grid-column: -2 / -1;
+        justify-self: end;
+        margin: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main--ski { background-position: center right;}
+}
+
