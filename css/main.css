@@ -11,12 +11,11 @@
     --fw-normal: 400;
     --fw-bold: 700;
     --fw-black: 900;
-    --grid: minmax(1em, 10%)
+    --grid: minmax(1em, 1fr)
             minmax(10rem, 22ch) 
             minmax(10rem, 23ch)
             minmax(1em, 3fr)
-            max-content 
-            ;
+            max-content;
 }
 
 body { 
@@ -26,6 +25,13 @@ body {
     color: var(--clr-dark);
     line-height: 1.6;
     background: gray;
+}
+
+@media (min-width: 700px) {
+    body {
+        display: grid;
+        grid-template-columns: var(--grid);
+    }
 }
 
 h1, h2, h3 { line-height: 1; }
@@ -190,9 +196,14 @@ header {
 
 
 @media (min-width: 700px) {
+    header {
+        grid-column: 1 / -1;
+    }
+
     .main {
         display: grid;
-        grid-template-columns: var(--grid);            
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;            
         justify-items: start;
         padding-left: 0;
         padding-right: 0;
@@ -208,7 +219,8 @@ header {
 @media (min-width: 1000px) {
     header {
         display: grid;
-        grid-template-columns: var(--grid);
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
         align-items: center;
     }
 
